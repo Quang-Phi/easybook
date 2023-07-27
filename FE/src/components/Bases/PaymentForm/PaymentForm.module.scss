@@ -1,0 +1,118 @@
+.book-field {
+  position: absolute;
+  top: 0;
+  margin-top: 2.5rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.8) translate(0);
+  transition: all 1s linear;
+  > * {
+    padding-bottom: 2.5rem;
+  }
+  .group-input {
+    .form-group {
+      &:first-child {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      .form-massage {
+        margin-top: 0.6rem;
+      }
+    }
+  }
+
+  .paypal {
+    p {
+      padding-bottom: 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+
+  &.active {
+    position: relative;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  &.active + fieldset {
+    transform: scale(1) translateX(20rem) !important;
+  }
+}
+
+.separator {
+  position: relative;
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 2rem;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 0.1rem;
+    background: #eee;
+    z-index: 1;
+  }
+  span {
+    position: relative;
+    width: 9rem;
+    display: inline-block;
+    background: #fff;
+    z-index: 2;
+    top: 1.2rem;
+  }
+}
+
+.title {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2.5rem;
+  border-bottom: 0.1rem solid #eee;
+  color: var(--primary);
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.group-input {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    label {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    span.form-icon {
+      position: absolute;
+      padding: 1.4rem 2rem;
+      top: 2.6rem;
+      left: 0;
+    }
+    .form-control {
+      padding: 1.4rem 2rem 1.4rem 4.5rem !important;
+      background: var(--grey-2);
+      border: 0.1rem solid #eee;
+      border-radius: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+    input {
+      margin-bottom: 0.6rem !important;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .group-input {
+    > :first-child,
+    > :nth-child(2) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+}

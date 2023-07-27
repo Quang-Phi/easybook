@@ -1,0 +1,132 @@
+.btn {
+  padding: 0 3rem;
+  height: 4.4rem;
+  line-height: 4.4rem;
+  border-radius: 0.4rem;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: left;
+  text-transform: capitalize;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 0.5rem rgba(255, 255, 255, 0.3);
+  span {
+    i {
+      color: var(--white);
+      position: absolute;
+      right: 0;
+      width: 5rem;
+      height: 4.4rem;
+      line-height: 4.4rem;
+      border-left: 0.1rem solid rgba(255, 255, 255, 0.21);
+      text-align: center;
+      top: 0;
+    }
+  }
+  &:hover {
+    color: var(--white);
+  }
+  & + .btn {
+    margin-left: 1rem;
+  }
+  &:disabled {
+    background-color: var(--grey);
+    cursor: not-allowed !important;
+  }
+}
+
+.icon {
+  padding: 0 8rem 0 3rem;
+}
+.full {
+  width: 100%;
+  text-align: center;
+}
+
+.small {
+  font-size: 1.1rem;
+  padding: 1rem 1.6rem;
+  margin: 1rem 0;
+  line-height: 1;
+  height: unset;
+  min-width: 8rem;
+  text-align: center;
+}
+
+.primary {
+  background: var(--primary);
+}
+.sub_primary {
+  background: var(--sub-primary);
+}
+
+.secondary {
+  background: var(--secondary);
+}
+
+.dlt {
+  background: red;
+}
+
+.act {
+  background: rgb(25, 195, 125);
+}
+
+.trans {
+  background: transparent;
+  border: 0.1rem dashed rgba(255, 255, 255, 0.21);
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.11);
+  &:hover {
+    background: var(--sub-primary);
+    i {
+      color: var(--secondary);
+    }
+  }
+}
+
+.disabled {
+  opacity: 0.8;
+  cursor: not-allowed !important;
+}
+
+.icon_left {
+  i {
+    margin-right: 1rem;
+  }
+}
+.icon_right {
+  i {
+    margin-left: 1rem;
+  }
+}
+
+.btn_default {
+  padding: 0;
+  background: #ecf6f8;
+  width: 3.6rem;
+  height: 3.6rem;
+  text-align: center;
+  margin: 0 0.4rem;
+  line-height: 3.6rem;
+  &:hover {
+    background: var(--sub-primary);
+    i {
+      color: var(--white);
+    }
+  }
+
+  i {
+    font-size: 1.8rem;
+    position: unset;
+    color: var(--sub-text-color);
+    line-height: inherit;
+    width: unset;
+    height: unset;
+    background: transparent;
+  }
+}

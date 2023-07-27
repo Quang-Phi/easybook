@@ -1,0 +1,160 @@
+.auth {
+  .auth-content {
+    width: 42rem;
+    background: var(--white);
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 0 0.6rem rgba(255, 255, 255, 0.3);
+    z-index: 1000;
+
+    .tabs-menu {
+      display: flex;
+      li {
+        width: 50%;
+        background: var(--sub-primary);
+        a {
+          display: block;
+          width: 100%;
+          padding: 2rem 3rem;
+          font-weight: 600;
+          font-size: 1.2rem;
+          color: var(--white);
+          text-align: left;
+          text-transform: uppercase;
+          i {
+            color: var(--white);
+            padding-right: 2rem;
+          }
+        }
+      }
+    }
+    .tabs-content {
+      margin-top: 1rem;
+      padding: 0 3rem;
+      .tab-wrap {
+        display: none;
+        .tab-inner {
+          h3 {
+            width: 100%;
+            font-size: 2rem;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            font-weight: 600;
+            color: var(--sub-text-color);
+            border-bottom: 0.1rem solid #eee;
+            span {
+              color: var(--sub-primary);
+              font-weight: 800;
+              font-size: 1.8rem;
+              text-transform: uppercase;
+              strong {
+                color: var(--secondary);
+              }
+            }
+          }
+          .custom-form {
+            form {
+              .form-group {
+                margin-bottom: 1.2rem;
+                position: relative;
+                label {
+                  padding-bottom: 1.2rem;
+                  span {
+                    color: var(--secondary);
+                  }
+                }
+                span.form-icon {
+                  position: absolute;
+                  padding: 1.4rem 2rem;
+
+                  top: 2.8rem;
+                  left: 0;
+                }
+                input {
+                  width: 100%;
+                  padding: 1.4rem 2rem 1.4rem 4.5rem;
+                  border: 0.1rem solid #eee;
+                  background: #f7f9fb;
+                  border-radius: 0.4rem;
+                  font-size: 1.3rem;
+                  margin-bottom: 0.4rem;
+                  &:focus {
+                    background: var(--white);
+                    outline: none;
+                  }
+                }
+                .form-massage {
+                  font-weight: 800;
+                }
+              }
+              button {
+                margin-top: 1.2rem;
+              }
+              .action {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                margin-top: 3rem;
+                align-items: center;
+                .remember {
+                  label {
+                    margin-left: 1.2rem;
+                  }
+                }
+                .forgot-password {
+                  display: flex;
+                  align-items: center;
+                  a {
+                    padding-top: 0;
+                  }
+                  a:hover {
+                    color: var(--sub-primary) !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .form-separator {
+        margin-top: 1rem;
+        position: relative;
+        text-align: center;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: 0.1rem;
+          background: #eee;
+          z-index: 1;
+        }
+        span {
+          position: relative;
+          width: 9rem;
+          display: inline-block;
+          background: #fff;
+          font-size: 1.3rem;
+          z-index: 2;
+        }
+      }
+      .social-login {
+        padding: 1.5rem 0;
+        margin-bottom: 1.2rem;
+        text-align: center;
+        p {
+          margin-bottom: 1.2rem;
+          font-size: 1.2rem;
+          line-height: 2;
+          padding: 1rem;
+        }
+        & > * {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,133 @@
+.loader-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.loader {
+  width: 10rem;
+  height: 5rem;
+  position: relative;
+}
+
+.loader-text {
+  position: absolute;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  color: var(--sub-primary);
+  animation: text_713 3.5s ease both infinite;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.load {
+  background-color: #9a79ff;
+  border-radius: 5rem;
+  display: block;
+  height: 2rem;
+  width: 2rem;
+  bottom: 0;
+  position: absolute;
+  transform: translateX(64px);
+  animation: loading_713 3.5s ease both infinite;
+}
+
+.load::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: #d1c2ff;
+  border-radius: inherit;
+  animation: loading2_713 3.5s ease both infinite;
+}
+
+@keyframes text_713 {
+  0% {
+    letter-spacing: 0.1rem;
+    transform: translateX(0);
+  }
+
+  40% {
+    letter-spacing: 0.2rem;
+    transform: translateX(2.6rem);
+  }
+
+  80% {
+    letter-spacing: 0.1rem;
+    transform: translateX(3.2rem);
+  }
+
+  90% {
+    letter-spacing: 0.2rem;
+    transform: translateX(0);
+  }
+
+  100% {
+    letter-spacing: 0.1rem;
+    transform: translateX(0);
+  }
+}
+
+@keyframes loading_713 {
+  0% {
+    width: 1.6rem;
+    transform: translateX(0);
+  }
+
+  40% {
+    width: 100%;
+    transform: translateX(0);
+  }
+
+  80% {
+    width: 1.6rem;
+    transform: translateX(6.4rem);
+  }
+
+  90% {
+    width: 100%;
+    transform: translateX(0);
+  }
+
+  100% {
+    width: 1.6rem;
+    transform: translateX(0);
+  }
+}
+
+@keyframes loading2_713 {
+  0% {
+    transform: translateX(0);
+    width: 1.6rem;
+  }
+
+  40% {
+    transform: translateX(0%);
+    width: 80%;
+  }
+
+  80% {
+    width: 100%;
+    transform: translateX(0);
+  }
+
+  90% {
+    width: 80%;
+    transform: translateX(1.5rem);
+  }
+
+  100% {
+    transform: translateX(0);
+    width: 1.6rem;
+  }
+}

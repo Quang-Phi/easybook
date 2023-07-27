@@ -1,0 +1,36 @@
+#main-wraper {
+  padding-top: 11rem;
+}
+.content {
+  width: 100%;
+  position: relative;
+  z-index: 4;
+  background: #fff;
+  overflow: hidden;
+}
+.go-top {
+  position: fixed;
+  bottom: 10rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  color: var(--white);
+  line-height: 4rem;
+  font-size: 1.8rem;
+  z-index: 9999;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 0.4rem;
+  text-align: center;
+  box-shadow: 0 0 0 0.4rem rgba(0, 0, 0, 0.2);
+  background: var(--sub-primary);
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: var(--primary);
+  }
+  i {
+    color: var(--white);
+    padding: 0;
+  }
+}

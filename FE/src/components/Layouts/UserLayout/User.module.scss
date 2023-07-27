@@ -1,0 +1,206 @@
+.top-user {
+  position: relative;
+  padding: 0;
+  & > :first-child {
+    padding-top: 14rem;
+  }
+  .sidebar-wrap {
+    display: none;
+  }
+  .top-user-wrap {
+    padding: 20rem 0 0;
+    .top-user-inner {
+      position: relative;
+      .user-menu {
+        padding-left: 29rem;
+
+        ul {
+          display: flex;
+          li {
+            * {
+              color: var(--white);
+            }
+            &.act {
+              border-top-left-radius: 0.6rem;
+              border-top-right-radius: 0.6rem;
+              background-color: var(--white);
+              * {
+                color: var(--sub-text-color);
+              }
+            }
+            a {
+              padding: 1.2rem 2rem;
+              border-radius: 0.4rem 0.4rem 0 0;
+              position: relative;
+              font-weight: 800;
+              i {
+                padding-right: 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.main-user {
+  padding: 0;
+  position: relative;
+  .main-user-wrap {
+    display: flex;
+    .sidebar-wrap {
+      position: absolute;
+      width: 25rem;
+      z-index: 20;
+      top: -8rem;
+      .sidebar-content {
+        border-radius: 0.6rem;
+        padding: 4.4rem 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .user-avatar {
+          width: 14rem;
+          height: 14rem;
+          img {
+            border-radius: 0.4rem;
+          }
+        }
+        .user-info {
+          margin: 3rem 0;
+          position: relative;
+          text-align: center;
+          &::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 3rem;
+            bottom: -1rem;
+            height: 0.2rem;
+            margin-left: -1.5rem;
+            border-radius: 0.2rem;
+            background: rgba(255, 255, 255, 0.21);
+          }
+          h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            span {
+              font-size: 1.1rem;
+              padding-bottom: 1rem;
+              display: block;
+            }
+          }
+        }
+        .group-btn {
+          width: 100%;
+          text-align: center;
+          & > :first-child {
+            border-radius: 3rem;
+          }
+          & > :last-child {
+            box-shadow: none;
+            margin-left: 0;
+            border-radius: 0.6rem;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            margin-top: 2rem;
+            text-transform: uppercase;
+            i {
+              color: var(--white);
+            }
+          }
+        }
+      }
+    }
+    .main-user-inner {
+      border-radius: 0.6rem;
+      padding: 5rem 0 8rem 29rem !important;
+      flex: 1;
+      > div {
+        border: 0.1rem solid #eee;
+        min-height: 40rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .top-user {
+    .top-user-wrap {
+      .sidebar-wrap {
+        display: block;
+        .sidebar-content {
+          display: flex;
+          border-radius: 0.6rem;
+          flex-wrap: wrap;
+          margin-bottom: 2rem;
+          position: relative;
+          .user-avatar {
+            padding: 2rem 0 0 5rem;
+            width: 30%;
+            img {
+              border-radius: 0.6rem;
+            }
+          }
+          .user-info {
+            padding: 2rem 5rem 0 3rem;
+            width: 70%;
+            h3 {
+              color: var(--white);
+              font-weight: 800;
+              span {
+                font-size: 1.1rem;
+                padding-bottom: 1rem;
+                display: block;
+              }
+            }
+            span.icon {
+              position: absolute;
+              right: 2rem;
+              bottom: 60%;
+              transform: translateY(50%);
+              i {
+                font-size: 10rem;
+                font-weight: 100;
+              }
+            }
+          }
+
+          > a {
+            position: absolute;
+            top: 1.5rem;
+            right: 5rem;
+          }
+          > :last-child {
+            margin-top: 3rem;
+            width: 100%;
+            margin-left: 0;
+            box-shadow: none;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+          }
+        }
+      }
+      .top-user-inner {
+        display: flex;
+        justify-content: center;
+        .user-menu {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+  .main-user {
+    .main-user-wrap {
+      .sidebar-wrap {
+        display: none;
+      }
+      .main-user-inner {
+        padding-left: 0 !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+}

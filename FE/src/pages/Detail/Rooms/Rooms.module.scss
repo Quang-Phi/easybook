@@ -1,0 +1,355 @@
+.rooms-wrap {
+  padding: 3rem;
+  .title-wrap {
+    display: flex;
+    .title {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+    .filter-items {
+      flex: 1;
+      position: relative;
+      .item {
+        display: flex;
+        justify-content: end;
+        font-size: 1.3rem;
+        font-weight: 400;
+        height: 4.2rem;
+        line-height: 4.2rem;
+        background: #f7f9fb;
+        color: var(--sub-text-color);
+        padding-left: 4.2rem;
+        padding-right: 3rem;
+        position: relative;
+        border-radius: 0.6rem;
+        border: solid 0.1rem #eee;
+        cursor: pointer;
+        &::before {
+          font-family: 'remixicon';
+          content: '\EF31';
+          font-size: 1.2rem;
+          position: absolute;
+          left: 1.6rem;
+          top: 0;
+          z-index: 1000;
+          color: var(--secondary);
+          font-weight: 900;
+        }
+        &::after {
+          font-family: 'remixicon';
+          content: '\EA4E';
+          position: absolute;
+          right: 1.4rem;
+          top: 0;
+          z-index: 1000;
+          font-weight: 900;
+        }
+        .current {
+          display: block;
+          text-transform: capitalize;
+          width: 100%;
+        }
+      }
+      .date-picker {
+        position: absolute;
+        min-width: 26rem;
+        width: 100%;
+        right: 0;
+        top: 100%;
+        z-index: 9999999;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+      }
+    }
+  }
+  .rooms-item {
+    margin-bottom: 2.4rem;
+    border-bottom: 0.1rem solid #eee;
+    padding: 1.2rem 0;
+    display: flex;
+    position: relative;
+    cursor: default;
+    .rooms-img {
+      width: 40%;
+      margin-bottom: 2.4rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      border-bottom-right-radius: 0;
+      position: relative;
+      img {
+        max-height: 18rem;
+      }
+      .availabel {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        min-height: 4.4rem;
+        line-height: 4.4rem;
+        padding: 0 6rem 0 2rem;
+        font-size: 1rem;
+        z-index: 10;
+        text-transform: uppercase;
+        color: var(--white);
+        background: var(--primary);
+        width: 100%;
+        font-weight: 800;
+      }
+    }
+    .rooms-details {
+      flex: 1;
+      padding-left: 2rem;
+
+      .rooms-info {
+        display: flex;
+        justify-content: space-between;
+        .info-text {
+        }
+        .price {
+          color: #5ecfb1;
+          font-size: 1.8rem;
+          font-weight: 800;
+          strong {
+            font-size: 1rem;
+            color: var(--sub-text-color);
+          }
+        }
+        .name {
+          font-size: 1.6rem;
+          font-weight: 700;
+        }
+        .guest {
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: var(--secondary);
+          span {
+            color: var(--sub-primary);
+          }
+        }
+      }
+      .facilities {
+        ul {
+          display: flex;
+          li {
+            display: flex;
+            align-items: center;
+          }
+          li + li {
+            margin-left: 1.2rem;
+          }
+        }
+      }
+      > :last-child {
+        margin: 2.4rem 0;
+      }
+    }
+  }
+}
+.modal-aside {
+  position: relative;
+  z-index: 102;
+  * {
+    color: var(--sub-text-color) !important ;
+  }
+  & > :first-child {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .close {
+    position: absolute;
+    left: 4rem;
+    width: 4rem;
+    height: 4rem;
+    top: 2.5rem;
+    line-height: 4rem;
+    z-index: 9999;
+    background: var(--primary);
+    border-radius: 0.6rem;
+    text-align: center;
+    cursor: pointer;
+    i {
+      color: var(--white) !important;
+      padding: 0;
+      font-size: 1.4rem;
+    }
+  }
+  .modal-aside-wrap {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 103;
+    transform: translateX(100%);
+    width: 55rem;
+    opacity: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    background: var(--white);
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    .modal-aside-inner {
+      .image {
+        position: relative;
+        img {
+          max-height: 35rem;
+        }
+        h3 {
+          position: relative;
+          color: var(--sub-primary) !important;
+          padding: 2rem 0 2.5rem;
+          cursor: pointer;
+          font-size: 1.8rem;
+          font-weight: 500;
+          position: absolute;
+          text-transform: capitalize;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+          z-index: 2122;
+          margin-bottom: 0;
+          border-bottom: none;
+          span {
+            display: block;
+            color: var(--grey-blue) !important;
+            margin-top: 0.4rem;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+          }
+        }
+      }
+      .list-info {
+        background: var(--grey-blue);
+        ul {
+          li {
+            border: 0.1rem solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1.2rem 0;
+            text-align: center;
+            font-size: 1.1rem;
+            text-transform: capitalize;
+            i {
+              font-size: 2.8rem;
+              line-height: 1;
+              padding-bottom: 1rem;
+              color: var(--sub-primary) !important;
+              font-weight: 500;
+            }
+            h5 {
+              font-size: 1.1rem;
+              color: #999 !important;
+              font-weight: 800;
+              span {
+                padding-left: 0.4rem;
+              }
+            }
+          }
+        }
+      }
+      .details {
+        padding: 2rem 4.5rem;
+        margin-top: 2rem;
+        h3 {
+          padding-bottom: 2.6rem;
+          font-size: 1.6rem;
+          font-weight: 700;
+          color: var(--primary) !important;
+        }
+
+        .text {
+          margin-bottom: 2rem;
+          padding-bottom: 2rem;
+          border-bottom: 0.1rem solid #eee;
+
+          p {
+            font-size: 1.3rem;
+            line-height: 2;
+            padding-bottom: 1rem;
+            font-weight: 500;
+          }
+        }
+        .amenities {
+          margin-bottom: 3rem;
+          padding-bottom: 2rem;
+          border-bottom: 0.1rem solid #eee;
+          ul {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            li {
+              margin-bottom: 1.5rem;
+              font-size: 1.3rem;
+              font-weight: 800;
+              position: relative;
+              text-transform: capitalize;
+              i {
+                color: var(--sub-primary) !important;
+                margin-right: 1.2rem;
+              }
+            }
+          }
+        }
+        & > :last-child {
+          color: var(--white) !important;
+          * {
+            color: var(--white) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .rooms-wrap {
+    .title-wrap {
+      flex-direction: column;
+      .title {
+        margin-bottom: 1.2rem;
+      }
+    }
+    .rooms-item {
+      flex-direction: column;
+      .rooms-img {
+        border-bottom-left-radius: 0;
+        width: 100%;
+        img {
+          max-height: 26rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .modal-aside {
+    .modal-aside-wrap {
+      width: 100vw;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .modal-aside {
+    .modal-aside-wrap {
+      .modal-aside-inner {
+        .details {
+          .amenities {
+            ul {
+              grid-template-columns: 1fr;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,177 @@
+#listings {
+  .listings-wrapper {
+    .listings-content {
+      .listings-inner {
+        margin-left: 2.4rem;
+        .card-listing-wrap {
+          text-align: center;
+          .search-key {
+            margin-top: 2.4rem;
+            display: flex;
+            .search-key-title {
+              font-size: 1.1rem;
+              text-transform: uppercase;
+              font-weight: 700;
+              min-width: 10rem;
+              text-align: left;
+              margin-right: 1.2rem;
+            }
+            ul {
+              display: flex;
+              flex-wrap: wrap;
+              li {
+                cursor: pointer;
+                margin-bottom: 1rem;
+                margin-right: 1rem;
+                span {
+                  margin-right: 0.4rem;
+                }
+                &:hover {
+                  .delete {
+                    opacity: 1;
+                    visibility: visible;
+                  }
+                }
+                .delete {
+                  margin-left: 0.6rem;
+                  opacity: 0;
+                  visibility: hidden;
+                  transition: all 0.2s ease-in-out;
+                  &:hover {
+                    transform: scale(1.1);
+                    color: var(--secondary);
+                  }
+                }
+              }
+            }
+          }
+          .action {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2.4rem;
+            .sort-by {
+              align-items: center;
+              span {
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                font-weight: 700;
+              }
+              .select-sort {
+                margin-left: 1.2rem;
+                position: relative;
+                select {
+                  appearance: none;
+                  outline-color: var(--sub-primary);
+                  padding: 0.8rem 3.4rem;
+                  border: none;
+                }
+                &::after {
+                  font-family: 'remixicon';
+                  content: '\EF3E';
+                  position: absolute;
+                  left: 1.2rem;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  font-weight: 900;
+                  color: var(--secondary);
+                }
+                &::before {
+                  font-family: 'remixicon';
+                  content: '\EA4D';
+                  position: absolute;
+                  right: 1.2rem;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  font-weight: 900;
+                  color: var(--secondary);
+                }
+              }
+            }
+            .layout {
+              li {
+                background: var(--white);
+                width: 3.6rem;
+                height: 3.6rem;
+                border-radius: 100%;
+                border: 1px solid #eee;
+                line-height: 3.6rem;
+                margin-left: 1rem;
+                cursor: pointer;
+                text-align: center;
+                i {
+                  color: var(--sub-text-color);
+                  font-size: 1.6rem;
+                  padding: 0;
+                  font-weight: 900;
+                }
+                &.current i {
+                  color: var(--sub-primary);
+                }
+                &:not(.current):hover i {
+                  color: var(--secondary);
+                }
+              }
+            }
+          }
+
+          .card-list-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin: 0 -1.5rem;
+            min-height: 49.5rem;
+            &.one-col {
+              grid-template-columns: 1fr;
+            }
+          }
+          .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #listings {
+    .listings-wrapper {
+      .listings-content {
+        .listings-inner {
+          margin-left: 0;
+          .card-listing-wrap {
+            .action {
+              margin-top: 2.4rem;
+            }
+            .card-list-content {
+              min-height: unset;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #listings {
+    .listings-wrapper {
+      .listings-content {
+        padding: 4rem 0;
+        .listings-inner {
+          .card-listing-wrap {
+            .action {
+              .layout {
+                display: none;
+              }
+            }
+            .card-list-content {
+              grid-template-columns: 1fr;
+            }
+          }
+        }
+      }
+    }
+  }
+}
