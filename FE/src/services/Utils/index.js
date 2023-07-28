@@ -1,5 +1,8 @@
-export const API_URL = 'http://localhost:8000/api/';
-export const API_SERVER_URL = 'http://localhost:8000';
+export const API_URL = 'https://qpbookingapi.site/api/';
+export const API_SERVER_URL = 'https://qpbookingapi.site/';
+
+// export const API_URL = 'http://localhost:8000/api/';
+// export const API_SERVER_URL = 'http://localhost:8000';
 export const componentDidMount = () => {
   document.body.style.overflow = 'hidden';
 };

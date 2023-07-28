@@ -1,5 +1,6 @@
 {
   "name": "booking",
+  "homepage": "https://qpbooking.net/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -43,6 +44,7 @@
     "redux-persist": "^6.0.0",
     "remixicon": "^3.4.0",
     "sass": "^1.63.4",
+    "serve": "^14.2.0",
     "styled-components": "^5.3.11",
     "web-vitals": "^2.1.4"
   },

@@ -342,7 +342,7 @@ const Listing = () => {
                         </ul>
                       </div>
                     </div>
-                    {shortedHotels && (
+                    {shortedHotels?.length ? (
                       <>
                         <div
                           style={
@@ -353,7 +353,7 @@ const Listing = () => {
                             layoutGrid === 1 && ['one-col'],
                           )}
                         >
-                          {shortedHotels.length ? (
+                          {shortedHotels?.length &&
                             Array.isArray(shortedHotels) &&
                             shortedHotels.map((item, index) => {
                               return (
@@ -365,18 +365,7 @@ const Listing = () => {
                                   layoutGrid={layoutGrid}
                                 />
                               );
-                            })
-                          ) : (
-                            <div className="no-data">
-                              <img
-                                src={
-                                  process.env.PUBLIC_URL +
-                                  '/imgs/base/notfound.avif'
-                                }
-                                alt="no data"
-                              />
-                            </div>
-                          )}
+                            })}
                         </div>
                         {shortedHotels?.length >= search.per_page ? (
                           <div className={cx('pagination')}>
@@ -390,6 +379,15 @@ const Listing = () => {
                           ''
                         )}
                       </>
+                    ) : (
+                      <div className="no-data">
+                        <img
+                          src={
+                            process.env.PUBLIC_URL + '/imgs/base/notfound.avif'
+                          }
+                          alt="no data"
+                        />
+                      </div>
                     )}
                   </div>
                 </div>

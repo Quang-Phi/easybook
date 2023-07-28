@@ -9,6 +9,10 @@ Route::get('api/csrf-token', function () {
         'csrfToken' => csrf_token(),
     ]);
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 // Route::get('api/create-payment-intent', function () {
 //     Stripe::setApiKey(env('sk_test_51NQJm4DCqdmv6gI3tgihloINjr2O5ty9OttFRqolWN5j4fP7DopGd0aStpGYBVKPaTchf8oc3UWKp6MKtBrVW7l400tysde6uE'));
 //     $paymentIntent = PaymentIntent::create([
