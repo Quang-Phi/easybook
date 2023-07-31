@@ -1,4 +1,3 @@
-import { DefaultLayout } from '~/components/Layouts';
 import NoFooter from '~/components/Layouts/NoFooter';
 import UserLayout from '~/components/Layouts/UserLayout';
 import { Detail, HomePage, Listing } from '~/pages';
@@ -16,7 +15,6 @@ const publicRoutes = [
   {
     path: '/',
     component: HomePage,
-    layout: DefaultLayout,
   },
   {
     path: '/listings',

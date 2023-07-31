@@ -334,6 +334,11 @@
   .modal-aside {
     .modal-aside-wrap {
       width: 100vw;
+      .image {
+        img {
+          height: 30rem;
+        }
+      }
     }
   }
 }
@@ -341,6 +346,10 @@
 @media screen and (max-width: 480px) {
   .modal-aside {
     .modal-aside-wrap {
+      .close {
+        top: 2rem;
+        left: 2rem;
+      }
       .modal-aside-inner {
         .details {
           .amenities {

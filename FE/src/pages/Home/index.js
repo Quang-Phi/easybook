@@ -26,19 +26,19 @@ function HomePage() {
 
   const heroSlides = [
     {
-      img: 'imgs/bg/4.jpg',
+      img: `${process.env.PUBLIC_URL} /imgs/bg/4.jpg`,
       title: 'Discover London - City is Never Sleeps',
       subtitle: 'availabel',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
-      img: 'imgs/bg/6.jpg',
+      img: `${process.env.PUBLIC_URL} /imgs/bg/6.jpg`,
       title: 'Premium Plaza Hotels - best hotels in London',
       subtitle: 'availabel',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
-      img: 'imgs/bg/9.jpg',
+      img: `${process.env.PUBLIC_URL} /imgs/bg/9.jpg`,
       title: 'Dummy Hotels - A list of hotels in Thailand',
       subtitle: 'availabel',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',

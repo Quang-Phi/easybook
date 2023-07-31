@@ -82,11 +82,11 @@ const Aside = ({ search, setSearch, actionSearch, setShowKeySearch }) => {
     return (value) => {
       const filteredData =
         key === 'location'
-          ? cities?.filter((item) =>
-              item.name.toLowerCase().includes(value.toLowerCase()),
+          ? cities?.filter((city) =>
+              city.name.toLowerCase().includes(value.toLowerCase()),
             )
-          : types?.filter((item) =>
-              item.name.toLowerCase().includes(value.toLowerCase()),
+          : types?.filter((type) =>
+              type.name.toLowerCase().includes(value.toLowerCase()),
             );
 
       setSearchItemFilter((prevState) => ({
@@ -104,7 +104,8 @@ const Aside = ({ search, setSearch, actionSearch, setShowKeySearch }) => {
       updateSearchData('location')(searchItemFilter?.location?.key_search);
     }, 500);
     return () => clearTimeout(timeout);
-  }, [searchItemFilter?.location?.key_search, updateSearchData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cities, searchItemFilter?.location?.key_search]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -112,10 +113,7 @@ const Aside = ({ search, setSearch, actionSearch, setShowKeySearch }) => {
     }, 500);
     return () => clearTimeout(timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    searchItemFilter.type.key_search,
-    searchItemFilter?.location?.key_search,
-  ]);
+  }, [types, searchItemFilter?.type?.key_search]);
 
   return (
     <>

@@ -11,17 +11,17 @@ const Footer = () => {
   const { contacts } = m;
   const posts = [
     {
-      img: 'imgs/base/7.jpg',
+      img: `${process.env.PUBLIC_URL} /imgs/base/7.jpg`,
       title: 'Vivamus dapibus rutrum',
       date: '21 Mar 09.05',
     },
     {
-      img: 'imgs/base/8.jpg',
+      img: `${process.env.PUBLIC_URL} /imgs/base/8.jpg`,
       title: 'In hac habitasse platea',
       date: '7 Mar 18.21',
     },
     {
-      img: 'imgs/base/9.jpg',
+      img: `${process.env.PUBLIC_URL} /imgs/base/9.jpg`,
       title: 'Tortor tempor in porta',
       date: '7 Mar 16.42',
     },

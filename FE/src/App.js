@@ -52,6 +52,7 @@ function App() {
   const [isAuthFormOpen, setIsAuthFormOpen] = useState(false);
   const [isBookModalOpen, setIsBookModalOpen] = useState(false);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+
   //
 
   //booking

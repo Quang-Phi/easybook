@@ -202,5 +202,10 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
+  .top-user {
+    .top-user-wrap {
+      padding-top: 6rem;
+    }
+  }
 }

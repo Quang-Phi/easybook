@@ -536,3 +536,10 @@
     }
   }
 }
+
+@media screen and (max-width: 576px) {
+  .wrapper {
+    position: relative;
+    z-index: 5;
+  }
+}

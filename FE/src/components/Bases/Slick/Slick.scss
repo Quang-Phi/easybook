@@ -34,13 +34,13 @@
     }
   }
   .slick-prev {
-    left: 50px !important;
+    left: 5rem !important;
     &::after {
       content: '\EA60';
     }
   }
   .slick-next {
-    right: 50px !important;
+    right: 5rem !important;
     &::after {
       content: '\EA6C';
     }
@@ -52,7 +52,7 @@
     padding: 0;
   }
   .slick-arrow {
-    box-shadow: 0px 0px 0px 9px rgb(58 172 237 / 50%);
+    box-shadow: 0 0 0 0.8rem rgb(58 172 237 / 50%);
   }
   .slick-prev {
     left: 5rem !important;
@@ -81,7 +81,7 @@
 
 .recently {
   .slick-arrow {
-    box-shadow: 0px 0px 0px 9px rgb(58 172 237 / 50%);
+    box-shadow: 0 0 0 0.8rem rgb(58 172 237 / 50%);
   }
   .slick-prev {
     left: -1.9rem !important;
@@ -160,7 +160,7 @@
 
 .modal_aside {
   .slick-arrow {
-    box-shadow: 0px 0px 0px 9px rgb(58 172 237 / 50%);
+    box-shadow: 0 0 0 0.8rem rgb(58 172 237 / 50%);
     top: calc(34% - 0.4rem);
     color: var(--white) !important;
   }
@@ -171,7 +171,7 @@
 
 .detail_img {
   .slick-arrow {
-    box-shadow: 0px 0px 0px 9px rgb(58 172 237 / 50%);
+    box-shadow: 0 0 0 0.8rem rgb(58 172 237 / 50%);
     position: fixed;
     .slick-prev {
       // left: 2rem;
@@ -192,6 +192,17 @@
   .recently {
     .slick-slide {
       padding: 0;
+    }
+  }
+  .modal_aside {
+    .slick-arrow {
+      top: 27.2rem;
+    }
+    .slick-next {
+      right: 2.5rem !important;
+    }
+    .slick-prev {
+      left: 2.5rem !important;
     }
   }
 }

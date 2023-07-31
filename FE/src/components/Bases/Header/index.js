@@ -1,14 +1,14 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import Tippy from '@tippyjs/react/headless';
-import { memo, useContext, useState } from 'react';
+import { memo, useContext, useEffect, useState } from 'react';
 import MyContext from '~/components/Context';
 import {
   API_SERVER_URL,
   checkLinkImg,
   componentDidMount,
 } from '~/services/Utils';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteFavorites,
@@ -19,12 +19,10 @@ import {
 const cx = classNames.bind(styles);
 
 function Header() {
-  const [menuMobileOpen, setMenuMobileOpen] = useState(false);
-  const closeMenuMobile = () => {
-    setMenuMobileOpen(false);
-  };
   //context
   const m = useContext(MyContext);
+  const location = useLocation();
+  const pathName = location.pathname;
   const { userId, setIsAuthFormOpen, isDetailOpen, token } = m;
   const dispatch = useDispatch();
 
@@ -32,6 +30,11 @@ function Header() {
   const favorites = useSelector((state) => state.user.listFavorite);
   const { userInfo } = useSelector((state) => state.user);
   //
+  const [menuMobileOpen, setMenuMobileOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuMobileOpen(false);
+  }, [pathName]);
 
   //logout
   const handleLogout = () => {
@@ -108,7 +111,7 @@ function Header() {
   return (
     <>
       <header
-        style={isDetailOpen ? { zIndex: 1 } : {}}
+        style={isDetailOpen ? { zIndex: -1 } : {}}
         className={cx('wrapper')}
       >
         <div className={cx('header-top')}>
@@ -178,7 +181,8 @@ function Header() {
                 <nav>
                   <ul className="d-flex">
                     {mainMenu.map((menu, index) => {
-                      return (
+                      const lastItem = index === mainMenu.length - 1;
+                      return lastItem ? (
                         <Tippy
                           key={index}
                           interactive
@@ -197,27 +201,33 @@ function Header() {
                             )
                           }
                         >
-                          <li>
-                            {menu.linkHref ? (
-                              <NavLink
-                                to={menu.linkHref}
-                                onClick={closeMenuMobile}
-                              >
-                                {menu.name}{' '}
-                                {menu.item && (
-                                  <i className="fas fa-caret-down"></i>
-                                )}
-                              </NavLink>
-                            ) : (
-                              <Link to="#">
-                                {menu.name}{' '}
-                                {menu.item && (
-                                  <i className="fas fa-caret-down"></i>
-                                )}
-                              </Link>
-                            )}
+                          <li key={index}>
+                            <Link to="#">
+                              {menu.name}{' '}
+                              {menu.item && (
+                                <i className="fas fa-caret-down"></i>
+                              )}
+                            </Link>
                           </li>
                         </Tippy>
+                      ) : (
+                        <li key={index}>
+                          {menu.linkHref ? (
+                            <NavLink to={menu.linkHref}>
+                              {menu.name}{' '}
+                              {menu.item && (
+                                <i className="fas fa-caret-down"></i>
+                              )}
+                            </NavLink>
+                          ) : (
+                            <Link to="#">
+                              {menu.name}{' '}
+                              {menu.item && (
+                                <i className="fas fa-caret-down"></i>
+                              )}
+                            </Link>
+                          )}
+                        </li>
                       );
                     })}
                   </ul>

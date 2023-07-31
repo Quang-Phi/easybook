@@ -34,3 +34,9 @@
     padding: 0;
   }
 }
+
+@media screen and (max-width: 576px) {
+  #main-wraper {
+    padding-top: 0;
+  }
+}
