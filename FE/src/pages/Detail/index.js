@@ -44,6 +44,7 @@ const Detail = () => {
 
   //redux
   const hotel = useSelector((state) => state.listing.listings.hotel);
+
   const {
     reviews: hotelReviews,
     images: hotelImages,
@@ -220,7 +221,11 @@ const Detail = () => {
           <section ref={refBanner} id="sec-hero" className={cx('hero-section')}>
             <img
               className="bg"
-              src={process.env.PUBLIC_URL + '/imgs/bg/4.jpg'}
+              src={
+                checkLinkImg(hotel?.images[0]?.image_link)
+                  ? hotel?.images[0]?.image_link
+                  : `${API_SERVER_URL}${hotel?.images[0]?.image_link}`
+              }
               alt=""
             />
             <div className={cx('hero-content')}>
@@ -459,7 +464,7 @@ const Detail = () => {
                         <div className={cx('about-text')}>
                           <h3 className={cx('title')}>About Hotel</h3>
                           <p className="desc  text-dark">
-                            {hotel?.hotel?.description}
+                            {hotel?.description}
                           </p>
                         </div>
 

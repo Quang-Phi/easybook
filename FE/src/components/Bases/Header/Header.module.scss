@@ -538,8 +538,11 @@
 }
 
 @media screen and (max-width: 576px) {
-  .wrapper {
-    position: relative;
-    z-index: 5;
+}
+
+@media screen and (max-width: 480px) {
+  .wishlist-content {
+    width: 100vw;
+    right: 0.5rem;
   }
 }

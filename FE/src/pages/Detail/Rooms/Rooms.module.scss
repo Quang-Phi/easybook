@@ -149,7 +149,7 @@
 }
 .modal-aside {
   position: relative;
-  z-index: 102;
+  z-index: 999999;
   * {
     color: var(--sub-text-color) !important ;
   }
@@ -326,6 +326,13 @@
           max-height: 26rem;
         }
       }
+      .rooms-details {
+        padding-left: 0;
+        > p {
+          text-align: justify;
+          margin-bottom: 2rem;
+        }
+      }
     }
   }
 }
@@ -337,6 +344,15 @@
       .image {
         img {
           height: 30rem;
+        }
+      }
+      .modal-aside-inner {
+        .details {
+          .text {
+            p {
+              text-align: justify;
+            }
+          }
         }
       }
     }
@@ -355,6 +371,21 @@
           .amenities {
             ul {
               grid-template-columns: 1fr;
+            }
+          }
+        }
+      }
+    }
+  }
+  .rooms-wrap {
+    .rooms-item {
+      .rooms-details {
+        .rooms-info {
+          .price {
+            strong {
+              display: block;
+              margin-top: 0.4rem;
+              text-align: end;
             }
           }
         }

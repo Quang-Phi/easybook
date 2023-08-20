@@ -310,7 +310,7 @@ input:not([type='range']):not([type='checkbox']) {
 }
 
 input {
-  color: var(--sub-text-color);
+  color: var(--sub-text-color) !important;
   -webkit-appearance: none;
   border: 0.1rem solid #eee;
   border-radius: 0.6rem;

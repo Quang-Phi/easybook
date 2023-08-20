@@ -57,9 +57,10 @@ const SlickItem = ({ item, custom, card_list, layoutGrid }) => {
               >
                 <img
                   src={
+                    item?.images !== undefined &&
                     item?.images[0]?.image_link &&
-                    checkLinkImg(item.images[0].image_link)
-                      ? item.images[0].image_link
+                    checkLinkImg(item?.images[0]?.image_link)
+                      ? item?.images[0]?.image_link
                       : `${API_SERVER_URL}${item?.images[0]?.image_link}`
                   }
                   alt="hotel-img"

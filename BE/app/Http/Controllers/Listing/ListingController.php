@@ -207,7 +207,7 @@ class ListingController extends Controller
                 );
 
                 HotelFacility::where('hotel_id', $hotel->id)->delete();
-                foreach ($data['facilities'] as $facility) {
+                foreach (json_decode($data['facilities'], true) as $facility) {
                     HotelFacility::create([
                         'hotel_id' => $hotel->id,
                         'facility_id' => $facility,

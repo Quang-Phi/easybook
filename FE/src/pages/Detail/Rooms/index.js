@@ -10,7 +10,6 @@ import MyContext from '~/components/Context';
 import {
   API_SERVER_URL,
   checkLinkImg,
-  componentDidMount,
   componentUnmount,
 } from '~/services/Utils';
 import { DatePicker } from 'antd';
@@ -23,7 +22,6 @@ const Rooms = () => {
   const hotelCategories = hotel?.categories || [];
   const refPicker = useRef(null);
   const m = useContext(MyContext);
-  const [isDetailOpenArray, setIsDetailOpenArray] = useState([]);
 
   //
   //props context
@@ -33,16 +31,31 @@ const Rooms = () => {
     setDataBook,
     token,
     setIsAuthFormOpen,
-    setIsDetailOpen,
   } = m;
+
+  //handle open detail room
+  const [cateDetail, setCateDetail] = useState({
+    show: false,
+    rooms: [],
+    cate: {},
+  });
+  //
 
   //handle booking room
   const handleBookRoom = (room) => {
     const hotelBook = hotel?.hotel;
+    setCateDetail({
+      show: false,
+      rooms: [],
+      cate: {},
+    });
     if (token) {
-      setIsDetailOpen(false);
-      setIsDetailOpenArray([]);
       setIsBookModalOpen(true);
+      const bill =
+        ((new Date(dataBook.dateOut) - new Date(dataBook.dateIn)) /
+          (1000 * 60 * 60 * 24)) *
+        room.price;
+
       setDataBook({
         ...dataBook,
         hotelId: hotelBook.id,
@@ -50,20 +63,11 @@ const Rooms = () => {
         roomId: room.id,
         roomName: room.name,
         price: room.price,
+        bill,
       });
     } else {
       setIsAuthFormOpen(true);
     }
-  };
-  //
-
-  //handle open detail room
-  const handleDetailToggle = (index) => {
-    setIsDetailOpen(true);
-    componentDidMount();
-    const updatedIsDetailOpenArray = [...isDetailOpenArray];
-    updatedIsDetailOpenArray[index] = !updatedIsDetailOpenArray[index];
-    setIsDetailOpenArray(updatedIsDetailOpenArray);
   };
   //
 
@@ -75,7 +79,8 @@ const Rooms = () => {
 
   const onChange = (value, dateString) => {
     const dateIn = dateString[0];
-    const dateOut = dateString[1];
+    console.log(dateIn); //2023-09-12
+    const dateOut = dateString[1]; //2023-09-13
     setDataBook({
       ...dataBook,
       dateIn,
@@ -123,7 +128,6 @@ const Rooms = () => {
           <>
             <div className={cx('rooms-inner')}>
               {hotelCategories?.map((cate, index) => {
-                const isDetailOpen = isDetailOpenArray[index] || false;
                 const maxPrice = rooms
                   ?.filter((room) => room.category_id === cate.id)
                   .reduce((maxPriceRoom, currentRoom) => {
@@ -192,157 +196,15 @@ const Rooms = () => {
                         sub_primary
                         icon
                         onClick={(e) => {
-                          handleDetailToggle(index);
+                          setCateDetail({
+                            show: true,
+                            rooms: availabelRooms || [],
+                            cate,
+                          });
                         }}
                       >
                         Detail
                       </Button>
-                    </div>
-                    <div className={cx('modal-aside')}>
-                      <div
-                        style={
-                          isDetailOpen
-                            ? { visibility: 'visible' }
-                            : { visibility: 'hidden' }
-                        }
-                        className="overlay"
-                      ></div>
-                      <div
-                        style={
-                          isDetailOpen
-                            ? {
-                                transform: 'translateY(0)',
-                                opacity: 1,
-                              }
-                            : {}
-                        }
-                        className={cx('modal-aside-wrap')}
-                      >
-                        <div
-                          onClick={() => {
-                            handleDetailToggle(index);
-                            componentUnmount();
-                            setIsDetailOpen(false);
-                          }}
-                          className={cx('close')}
-                        >
-                          <i className="ri-close-line"></i>
-                        </div>
-                        <Slick modal_aside>
-                          {availabelRooms?.map((room, roomIndex) => {
-                            return (
-                              <div
-                                key={roomIndex}
-                                className={cx('modal-aside-inner')}
-                              >
-                                <div className={cx('image')}>
-                                  <Slick
-                                    config={{
-                                      infinite: true,
-                                      autoplay: true,
-                                      autoplaySpeed: 3000,
-                                      pauseOnHover: true,
-                                      fade: true,
-                                      arrows: false,
-                                    }}
-                                  >
-                                    {room.images.map((img, imgIndex) => {
-                                      return (
-                                        <div
-                                          key={imgIndex}
-                                          className={cx('item')}
-                                        >
-                                          <img
-                                            src={
-                                              checkLinkImg(img.image_link)
-                                                ? img.image_link
-                                                : `${API_SERVER_URL}${img.image_link}`
-                                            }
-                                            alt="detail-img"
-                                          />
-                                        </div>
-                                      );
-                                    })}
-                                  </Slick>
-                                  <h3 className={cx('title')}>
-                                    {cate.name}
-                                    <span>{room.name}</span>
-                                  </h3>
-                                </div>
-                                <div className={cx('list-info')}>
-                                  <ul
-                                    style={{
-                                      display: 'grid',
-                                      gridTemplateColumns: `repeat(4, 1fr)`,
-                                    }}
-                                  >
-                                    <li>
-                                      <i className="ri-hand-coin-line"></i>
-                                      <h5>
-                                        {room.price}
-                                        <span>/ per night</span>
-                                      </h5>
-                                    </li>
-                                    <li>
-                                      <i className="ri-group-fill"></i>
-                                      <h5>
-                                        {cate.max_guests}
-                                        <span>persions</span>
-                                      </h5>
-                                    </li>
-                                    <li>
-                                      <i className="ri-tv-2-line"></i>
-                                      <h5>
-                                        55
-                                        <span>Inch</span>
-                                      </h5>
-                                    </li>
-                                    <li>
-                                      <i className="ri-24-hours-line"></i>
-                                      <h5>
-                                        hour
-                                        <span> short rental</span>
-                                      </h5>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <div className={cx('details')}>
-                                  <div className={cx('text')}>
-                                    <h3>Room Details</h3>
-                                    <p>{cate.description}</p>
-                                  </div>
-                                  <div className={cx('amenities')}>
-                                    <h3>Amenities</h3>
-                                    <ul>
-                                      <li>
-                                        <i className="ri-wifi-line" />
-                                        Free WiFi
-                                      </li>
-                                      {cate.amenities.map((item, index) => {
-                                        return (
-                                          <li key={index}>
-                                            <i className={amenityIcons[item]} />
-                                            {item}
-                                          </li>
-                                        );
-                                      })}
-                                    </ul>
-                                  </div>
-                                  <Button
-                                    onClick={(e) => {
-                                      handleBookRoom(room);
-                                    }}
-                                    secondary
-                                    icon
-                                  >
-                                    Book Now
-                                  </Button>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </Slick>
-                      </div>
                     </div>
                   </div>
                 );
@@ -352,6 +214,145 @@ const Rooms = () => {
         ) : (
           ''
         )}
+      </div>
+      <div className={cx('modal-aside')}>
+        <div
+          style={
+            cateDetail.show
+              ? { visibility: 'visible' }
+              : { visibility: 'hidden' }
+          }
+          className="overlay"
+        ></div>
+        <div
+          style={
+            cateDetail.show
+              ? {
+                  transform: 'translateY(0)',
+                  opacity: 1,
+                }
+              : {}
+          }
+          className={cx('modal-aside-wrap')}
+        >
+          <div
+            onClick={() => {
+              setCateDetail({ ...cateDetail, show: false });
+              componentUnmount();
+            }}
+            className={cx('close')}
+          >
+            <i className="ri-close-line"></i>
+          </div>
+          <Slick modal_aside>
+            {cateDetail.rooms?.map((room, roomIndex) => {
+              return (
+                <div key={roomIndex} className={cx('modal-aside-inner')}>
+                  <div className={cx('image')}>
+                    <Slick
+                      config={{
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                        pauseOnHover: true,
+                        fade: true,
+                        arrows: false,
+                      }}
+                    >
+                      {room.images.map((img, imgIndex) => {
+                        return (
+                          <div key={imgIndex} className={cx('item')}>
+                            <img
+                              src={
+                                checkLinkImg(img.image_link)
+                                  ? img.image_link
+                                  : `${API_SERVER_URL}${img.image_link}`
+                              }
+                              alt="detail-img"
+                            />
+                          </div>
+                        );
+                      })}
+                    </Slick>
+                    <h3 className={cx('title')}>
+                      {cateDetail?.cate?.name}
+                      <span>{room.name}</span>
+                    </h3>
+                  </div>
+                  <div className={cx('list-info')}>
+                    <ul
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: `repeat(4, 1fr)`,
+                      }}
+                    >
+                      <li>
+                        <i className="ri-hand-coin-line"></i>
+                        <h5>
+                          {room.price}
+                          <span>/ per night</span>
+                        </h5>
+                      </li>
+                      <li>
+                        <i className="ri-group-fill"></i>
+                        <h5>
+                          {cateDetail?.cate?.max_guests}
+                          <span>persions</span>
+                        </h5>
+                      </li>
+                      <li>
+                        <i className="ri-tv-2-line"></i>
+                        <h5>
+                          55
+                          <span>Inch</span>
+                        </h5>
+                      </li>
+                      <li>
+                        <i className="ri-24-hours-line"></i>
+                        <h5>
+                          hour
+                          <span> short rental</span>
+                        </h5>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className={cx('details')}>
+                    <div className={cx('text')}>
+                      <h3>Room Details</h3>
+                      <p>{cateDetail?.cate?.description}</p>
+                    </div>
+                    <div className={cx('amenities')}>
+                      <h3>Amenities</h3>
+                      <ul>
+                        <li>
+                          <i className="ri-wifi-line" />
+                          Free WiFi
+                        </li>
+                        {cateDetail?.cate?.amenities.map((item, index) => {
+                          return (
+                            <li key={index}>
+                              <i className={amenityIcons[item]} />
+                              {item}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                    <Button
+                      onClick={(e) => {
+                        handleBookRoom(room);
+                      }}
+                      secondary
+                      icon
+                    >
+                      Book Now
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+          </Slick>
+        </div>
       </div>
     </>
   );

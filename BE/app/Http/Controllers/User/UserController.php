@@ -29,7 +29,8 @@ class UserController extends Controller
     function login(Request $request)
     {
         $users = $this->users;
-        $email = $request->email;
+        $email = strtolower($request->email);
+
         $credentials = $request->only('email', 'password');
         $existingUser = $users->where('email', $email)->first();
         if (!$existingUser) {
@@ -62,7 +63,7 @@ class UserController extends Controller
             DB::beginTransaction();
             $users = $this->users;
             $name = $request->name;
-            $email = $request->email;
+            $email = strtolower($request->email);
             $password = $request->password;
 
             $existingUser = $users->where('email', $email)->first();

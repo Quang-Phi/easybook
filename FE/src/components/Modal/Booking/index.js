@@ -16,7 +16,6 @@ const Booking = () => {
   const m = useContext(MyContext);
   const { isBookModalOpen, setIsBookModalOpen, dataBook } = m;
   //
-
   //redux data
   const { userInfo } = useSelector((state) => state.user);
   //
@@ -29,21 +28,11 @@ const Booking = () => {
       phone: userInfo.phone,
     },
   });
-  const formDate = useForm({
-    defaultValues: {
-      dateIn: null,
-      dateOut: null,
-    },
-  });
   const {
     register,
     formState: { errors },
     trigger,
   } = formInfo;
-  const {
-    formState: { errors: errorsDate },
-    trigger: triggerDate,
-  } = formDate;
 
   //handle modal book
   const step = ['personal info', 'payment method', 'confirm'];
@@ -66,17 +55,10 @@ const Booking = () => {
       try {
         const step1Valid = await trigger(['name', 'email', 'phone']);
         if (step1Valid && Object.keys(errors).length === 0) {
-          const dateInValid = await triggerDate('dateIn');
-          const dateOutValid = await triggerDate('dateOut');
-          if (
-            dateInValid &&
-            dateOutValid &&
-            Object.keys(errorsDate).length === 0
-          ) {
-            const currentIndex = step.indexOf(stepBook);
-            if (currentIndex < step.length - 1) {
-              setStepBook(step[currentIndex + 1]);
-            }
+          const currentIndex = step.indexOf(stepBook);
+          if (currentIndex < step.length - 1) {
+            setStepBook(step[currentIndex + 1]);
+
             return;
           }
         } else {

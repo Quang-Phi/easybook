@@ -530,9 +530,10 @@ const Aside = ({ search, setSearch, actionSearch, setShowKeySearch }) => {
                 }}
                 secondary
                 full
+                icon_right
               >
                 Search
-                <i className="ms-3 far fa-search"></i>
+                <i className="ri-search-2-line"></i>
               </Button>
             </div>
           </div>

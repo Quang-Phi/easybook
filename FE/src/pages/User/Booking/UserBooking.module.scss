@@ -66,3 +66,24 @@
 .content {
   padding: 0 3rem;
 }
+
+@media screen and (max-width: 576px) {
+  .main-user-listing {
+    .content.booking {
+      .booking-item {
+        padding: 2.5rem 0;
+        .avatar {
+          position: relative;
+        }
+        .content {
+          margin-left: 0;
+          padding: 0;
+          margin-top: 1rem;
+          h3 {
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

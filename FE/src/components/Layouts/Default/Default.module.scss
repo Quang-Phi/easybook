@@ -4,7 +4,7 @@
 .content {
   width: 100%;
   position: relative;
-  z-index: 4;
+  // z-index: 4;
   background: #fff;
   overflow: hidden;
 }
@@ -36,7 +36,4 @@
 }
 
 @media screen and (max-width: 576px) {
-  #main-wraper {
-    padding-top: 0;
-  }
 }
